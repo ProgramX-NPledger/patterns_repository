@@ -1,4 +1,103 @@
 ﻿
+PRINT N'Creating [dbo].[Customer]...';
+
+
+GO
+CREATE TABLE [dbo].[Customer] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [Name]        VARCHAR (128) NOT NULL,
+    [Address]     VARCHAR (128) NULL,
+    [TownCity]    VARCHAR (128) NULL,
+    [CountyState] VARCHAR (128) NULL,
+    [PostcodeZip] VARCHAR (32)  NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+
+PRINT N'Creating [dbo].[Invoice]...';
+
+CREATE TABLE [dbo].[Invoice] (
+    [Id]          INT      IDENTITY (1, 1) NOT NULL,
+    [CustomerID]  INT      NOT NULL,
+    [InvoiceDate] DATETIME NOT NULL,
+    [TermsDays]   INT      NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+GO
+
+PRINT N'Creating [dbo].[FK_Invoice_Customer]...';
+
+ALTER TABLE [dbo].[Invoice] WITH NOCHECK
+    ADD CONSTRAINT [FK_Invoice_Customer] FOREIGN KEY ([CustomerID]) REFERENCES [dbo].[Customer] ([Id]);
+
+
+GO
+
+PRINT N'Creating [dbo].[StockItem]...';
+
+
+GO
+CREATE TABLE [dbo].[StockItem] (
+    [Id]                 INT             IDENTITY (1, 1) NOT NULL,
+    [ProductCode]        VARCHAR(16)             NOT NULL,
+    [Name]               VARCHAR(128)             NOT NULL,
+    [NetPricePerUnit]    NUMERIC (18, 4) NOT NULL,
+    [SalesTaxPercentage] NUMERIC (18, 4) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+GO
+
+PRINT N'Creating [dbo].[InvoiceLine]...';
+
+
+GO
+CREATE TABLE [dbo].[InvoiceLine] (
+    [Id]                     INT             IDENTITY (1, 1) NOT NULL,
+    [InvoiceID]              INT             NOT NULL,
+    [StockItemID]            INT             NOT NULL,
+    [NumberOfUnits]          NUMERIC (18, 4) NOT NULL,
+    [NetLinePriceAdjustment] NUMERIC (18, 4) NOT NULL,
+    [Ordinal]                INT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+
+PRINT N'Creating unnamed constraint on [dbo].[InvoiceLine]...';
+
+
+GO
+ALTER TABLE [dbo].[InvoiceLine]
+    ADD DEFAULT 0 FOR [NetLinePriceAdjustment];
+
+
+GO
+
+PRINT N'Creating [dbo].[FK_InvoiceLine_Invoice]...';
+
+
+GO
+ALTER TABLE [dbo].[InvoiceLine] WITH NOCHECK
+    ADD CONSTRAINT [FK_InvoiceLine_Invoice] FOREIGN KEY ([InvoiceID]) REFERENCES [dbo].[Invoice] ([Id]);
+
+
+GO
+
+PRINT N'Creating [dbo].[FK_InvoiceLine_StockItem]...';
+
+
+GO
+ALTER TABLE [dbo].[InvoiceLine] WITH NOCHECK
+    ADD CONSTRAINT [FK_InvoiceLine_StockItem] FOREIGN KEY ([StockItemID]) REFERENCES [dbo].[StockItem] ([Id]);
+
+
+GO
+
+
 PRINT N'Genereating [Customer] data ...';
 SET IDENTITY_INSERT [dbo].[Customer] ON
 INSERT INTO [dbo].[Customer] ([Id], [Name], [Address], [TownCity], [CountyState], [PostcodeZip]) VALUES (1, N'Frodo Baggins', N'Bag End', N'The Shire', N'Eriador', N'ME1')
