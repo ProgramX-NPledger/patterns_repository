@@ -43,16 +43,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sql\0010 Customer.sql" />
-    <Content Include="sql\0011 Invoice.sql" />
-    <Content Include="sql\0012 StockItem.sql" />
-    <Content Include="sql\0013 InvoiceLine.sql" />
-    <Content Include="sql\0014 StockItem.sql" />
-    <Content Include="sql\0015 StockItem.sql" />
-    <Content Include="sql\0020 Customer.sql" />
-    <Content Include="sql\0021 StockItem.sql" />
-    <Content Include="sql\0022 Invoice.sql" />
-    <Content Include="sql\0023 InvoiceLine.sql" />
+    <Content Include="sql\Data.sql" />
+    <Content Include="sql\Schema.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
