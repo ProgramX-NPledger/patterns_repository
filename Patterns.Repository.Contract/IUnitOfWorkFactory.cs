@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Patterns.Repository.Model
+namespace Patterns.Repository.Contract
 {
-    public class Class1
-    {
-    }
+	interface IUnitOfWorkFactory
+	{
+	}
 }

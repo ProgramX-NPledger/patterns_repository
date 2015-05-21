@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Patterns.Repository.Data
 {
-    public class Class1
+    public class EntityFrameworkUnitOfWork
     {
     }
 }

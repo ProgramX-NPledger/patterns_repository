@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,11 +48,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="EntityFrameworkRepositoryBase.cs" />
+    <Compile Include="EntityFrameworkUnitOfWork.cs" />
+    <Compile Include="EntityFrameworkUnitOfWorkFactory.cs" />
+    <Compile Include="InvoiceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SopModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SopModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SopModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SopModel.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="sql\Data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SopModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SopModel.edmx</DependentUpon>
+      <LastGenOutput>SopModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SopModel.edmx.diagram">
+      <DependentUpon>SopModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Patterns.Repository.Contract\Patterns.Repository.Contract.csproj">
+      <Project>{fcf09257-a1c4-41dc-ad74-549aa4b0ec9d}</Project>
+      <Name>Patterns.Repository.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Patterns.Repository.Model\Patterns.Repository.Model.csproj">
+      <Project>{8a72b9c9-574b-4959-a6b8-8754aba9762c}</Project>
+      <Name>Patterns.Repository.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

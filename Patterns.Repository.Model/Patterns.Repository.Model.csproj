@@ -39,8 +39,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>SopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.cs">
+      <DependentUpon>SopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceLine.cs">
+      <DependentUpon>SopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SopModel.cs" />
+    <Compile Include="SopModel.designer.cs">
+      <DependentUpon>SopModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SopModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockItem.cs">
+      <DependentUpon>SopModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SopModel1.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
