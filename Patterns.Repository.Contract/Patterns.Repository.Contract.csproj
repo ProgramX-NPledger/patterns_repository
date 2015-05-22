@@ -45,6 +45,12 @@
     <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Patterns.Repository.Model\Patterns.Repository.Model.csproj">
+      <Project>{8a72b9c9-574b-4959-a6b8-8754aba9762c}</Project>
+      <Name>Patterns.Repository.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

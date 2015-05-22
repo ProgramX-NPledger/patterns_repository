@@ -14,10 +14,10 @@ namespace Patterns.Repository.Data
     using System.Data.Entity.Infrastructure;
     using Patterns.Repository.Model;
     
-    public partial class Patterns_Repository_DBEntities : DbContext
+    public partial class SopEntities : DbContext
     {
-        public Patterns_Repository_DBEntities()
-            : base("name=Patterns_Repository_DBEntities")
+        public SopEntities()
+            : base("name=SopEntities")
         {
         }
     

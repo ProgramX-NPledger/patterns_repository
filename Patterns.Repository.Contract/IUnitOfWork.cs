@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Patterns.Repository.Contract
 {
-	interface IUnitOfWork
+	public interface IUnitOfWork : IDisposable
 	{
+		IInvoiceRepository CreateInvoiceRepository();
+		IRepository<TEntity> CreateRepositoryFor<TEntity>()
+			where TEntity : class;
+		void SaveChanges();
+
 	}
 }

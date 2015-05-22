@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Patterns.Repository.Contract
 {
-	interface IUnitOfWorkFactory
+	public interface IUnitOfWorkFactory
 	{
+		IUnitOfWork Create();
+
 	}
 }

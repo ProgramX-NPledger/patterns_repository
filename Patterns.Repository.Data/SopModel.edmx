@@ -188,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Patterns_Repository_DBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
           <EntitySet Name="InvoiceLines" EntityType="Self.InvoiceLine" />
@@ -211,7 +211,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Patterns_Repository_DBModelStoreContainer" CdmEntityContainer="Patterns_Repository_DBEntities">
+        <EntityContainerMapping StorageEntityContainer="Patterns_Repository_DBModelStoreContainer" CdmEntityContainer="SopEntities">
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="Patterns_Repository_DBModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
