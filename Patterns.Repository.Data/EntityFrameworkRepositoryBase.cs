@@ -23,32 +23,47 @@ namespace Patterns.Repository.Data
 	public class EntityFrameworkRepositoryBase<TEntity> : EntityFrameworkRepositoryBase, IRepository<TEntity>
 		where TEntity : class
 	{
-		protected IDbSet<TEntity> Set { get; private set; }
+		protected IDbSet<TEntity> DbSet { get; private set; }
 
 		public EntityFrameworkRepositoryBase(EntityFrameworkUnitOfWork unitOfWork)
 			: base(unitOfWork)
 		{
-			Set=UnitOfWork.Entities.Set<TEntity>();
+			DbSet=UnitOfWork.Entities.Set<TEntity>();
 		}
 
 		public virtual bool Any(Expression<Func<TEntity, bool>> predicate)
 		{
-			return Set.Any(predicate);
+			return DbSet.Any(predicate);
 		}
 
 		public void Add(TEntity entity)
 		{
-			Set.Add(entity);
+			DbSet.Add(entity);
 		}
 
 		public void Delete(TEntity entity)
 		{
-			Set.Remove(entity);
+			DbSet.Remove(entity);
 		}
 
 		public TEntity Single(Expression<Func<TEntity, bool>> predicate)
 		{
-			return Set.Single(predicate);
+			return DbSet.Single(predicate);
+		}
+
+		public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+		{
+			return DbSet.SingleOrDefault(predicate);
+		}
+
+		public IQueryable<TEntity> Where(Expression<Func<TEntity,bool>> predicate)
+		{
+			return DbSet.Where(predicate);
+		}
+
+		public IQueryable<TEntity> Set()
+		{
+			return DbSet;
 		}
 	}
 }

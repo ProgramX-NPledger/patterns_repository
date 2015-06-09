@@ -17,9 +17,9 @@ namespace Patterns.Repository.Data
 
 
 
-		public System.Collections.Generic.IEnumerable<Invoice> GetOutstandingInvoicesForCustomer(int customerId)
+		public IEnumerable<Invoice> GetOutstandingInvoicesForCustomer(int customerId)
 		{
-			return Set.Include("InvoiceLines.StockItem").Include("Customer")
+			return DbSet.Include("InvoiceLines.StockItem").Include("Customer")
 				.Where(q => q.Customer.Id == customerId);
 		}
 	}
